@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Signin</title>
+    <style>
+        h1{
+            padding:20px;
+            align-content: center;
+            align-content: center;
+            display: flex;
+            font: 200;
+            font-style: bold;
+        }
+        .form-control{
+            width: 350px;
+            font: bold;
+            border-color: black;
+        }
+        body{
+            background-color: #8e581e;
+            color: white;
+            background-image: url('https://i.postimg.cc/gcVCkVJn/Untitled-design.png');
+            background-size: cover;
+            
+        }
+        .form-text{
+            color:aliceblue;
+        }
+        .submit{
+            background-color: rgb(16, 124, 197);
+            color: white;
+            font: 100;
+            border-radius: 10px;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/nav') %>
+
+    <div class="container">
+        <form action="/user/signin" method="POST">
+            <h1>SIGN  IN</h1>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="password">
+            </div>
+            
+            <button type="submit" class="submit">Submit</button>
+        </form>
+
+    </div>
+    <%- include('./partials/script') %>
+</body>
+</html>

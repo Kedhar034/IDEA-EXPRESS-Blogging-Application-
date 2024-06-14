@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>My Account</title>
+    <style>
+        body {
+            background-color: #99a3ad;
+            color: #343a40;
+            font-family: Arial, sans-serif;
+        }
+        .account-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .account-header {
+            margin-bottom: 20px;
+        }
+        .account-info, .blogs-list {
+            margin-bottom: 20px;
+        }
+        .blogs-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .blogs-list li {
+            padding: 10px;
+            background: #e9ecef;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .blogs-list a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    
+    <div class="container">
+        <div class="account-container">
+            <div class="account-header">
+                <h1>My Account</h1>
+            </div>
+            <div class="account-info">
+                <p><strong>Name:</strong> <%= user.fullname %></p>
+                <p><strong>Email:</strong> <%= user.email %></p>
+                <p><strong>Total Blogs:</strong> <%= blogscount %></p>
+            </div>
+            <div class="blogs-list">
+                <h2>My Blogs</h2>
+                <ul>
+                    <% if (blogs.length === 0) { %>
+                        <p>You have no blogs.</p>
+                    <% } else { %>
+                        <% blogs.forEach(blog => { %>
+                            <li>
+                                <%= blog.title %> - <a href="/blog/<%= blog._id %>">View</a>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/script') %>
+</body>
+</html>

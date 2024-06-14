@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Homepage</title>
+    <style>
+        body{
+            background-image: url('https://i.postimg.cc/VsxKfttz/Good-things-3.png');
+            background-size: cover;
+            color:white;
+
+        }
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    
+    <div class="container  mt-3">
+        <div class="row row-cols-4 mb-4">
+            <% blogs.forEach(blog => { %>
+                <div class="col">
+                    <div class="card" style="width: 16rem;" >
+                        <img src="<%= blog.coverImageURL %>" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= blog.title %></h5>
+                          <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                          <form action="/blog/<%= blog._id %>?_method=DELETE" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger delete-button">Delete</button>
+                        
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+
+
+    <%- include('./partials/script') %>
+</body>
+</html>
